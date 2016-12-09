@@ -15,36 +15,23 @@ var dropPosX;
 var dropPosY = 400;
 var dropTimer = 30;
 var finishLine;
-var randomSpare=1;
+var randomSpare=3;
 var gameChooser=3;
 var fireE=0;
 var oneFive = 1.5;
 var img;
+var keyCodeS=0;
+var keyCodeT=0;
+var keyCodeO =0;
+var keyCodeP = 0;
 
 function preload(){
   img = loadImage("assets/gameboy.png");
 }
 function setup(){
-  // gameChooser = gameChooser - random(0,3);
   gameChooser = random(0,3);
-
-  function setup() {
-  // image(img, 0, 0,650,1000);
-  }
-  // if(gameChooser < 2){
-  //   Bike === true;
-  // }
-  // else if(gameChooser > 1 && gameChooser < 2){
-  //
-  // }
-  // else {
-  //   Catch === true;
-  // }
-
-
   mic = new p5.AudioIn()
   mic.start()
-
 
   createCanvas(650,1000);
   noStroke();
@@ -52,44 +39,20 @@ function setup(){
   dropPosX =random(150,300);
   finishLine = random(200,600);
 
-
-
 }
 function draw(){
-
-  //draw da gamecube
-
-  // background(195,192,187);
-  // //grey
-  // push();
-  // fill(82,85,94);
-  // rect(40,80,550,450);
-  // pop();
-  // //grren
-  // push();
-  // fill(71,88,20);
-  // rect(125,120,360,360);
-  // pop();
-  // //red
-  // fill(130,10,71);
-  //
+  //Gameboy
   image(img, 0, 0,650,1000);
-
-
-
-
-
-
-
-
-
-
-console.log(gameChooser);
+  console.log(gameChooser);
 
 // Racing Game
 if(gameChooser < 1){
   image(img, 0, 0,650,1000);
 
+  textSize(20);
+  fill(255);
+
+  text("PRESS A KEY TO HIT THE GAS",150,250,10);
 
   // background(240,100,40);
   fill(playerColor);
@@ -173,63 +136,28 @@ if(gameChooser > 1 && gameChooser < 2){
   image(img, 0, 0,650,1000);
 
 
-  // Catch the Honey
+  // Press Stop
   //
-  textSize(30);
+  textSize(20);
   fill(255);
-  text("RUB OUT THE FIRE",150,280);
+  text("STOP SQUARE AT LINE",210,200);
   fill(210,120,5);
   rect(dropPosX,dropPosY,50,50);
+
+  //finish line
+  var finishLine = 275;
+  fill(255);
+  rect(120,finishLine,405,10);
   dropPosY = dropPosY - randomSpare;
-  // dropPosY = dropPosY - randomSpare;
 
-  //
-  //
-  // rect(0,finishLine,width,50);
-  // function keyPressed(){
-  //   randomSpare = 0;
-  // }
-  //
-  // dropTimer = dropTimer - .5;
-  // fill(255);
-  //
-  // if(keyIsPressed === true){
-  //
-  //   randomSpare = 0;
+  //runner
 
-  if(mouseY- dropPosY < 30 && mouseY- dropPosY > -30 ){
-    textSize(32);
-    text("KEEP RUBBING",120,120)
-    fireE = fireE + 1;
-    if(fireE > 50){
-      randomSpare = 0;
-      fill(255);
-    }
-    if(dropPosY < 100){
-      text(":(",300,250)
-    }
-    }
-
-
-  }
-    // if(mouseX=dropPosX){
-      // randomSpare = 0;
-    // }
-    //
-    // }
-
+  if(keyIsPressed === true){
+    randomSpare = 0
+      if(dropPosY - finishLine > 5){
+        fill(255,125,24);
+      }
   }
 
-//
-//     if(finishLine- dropPosY < 50 && finishLine- dropPosY > -50){
-//         background(0,255,0);
-//       }
-//       else {
-//         fill(255);
-//         textSize(64);
-//         text("HUSH NIGGA",300,300);
-//
-//       }
-//     }
-//   }
-// }
+}
+}
